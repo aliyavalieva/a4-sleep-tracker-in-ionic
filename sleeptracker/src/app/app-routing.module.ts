@@ -10,7 +10,11 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'overnight-sleep',
+    loadChildren: () => import('./overnight-sleep/overnight-sleep.module').then( m => m.OvernightSleepPageModule)
   },
+
 ];
 
 @NgModule({

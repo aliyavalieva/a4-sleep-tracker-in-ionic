@@ -13,8 +13,19 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="container3">
+    <ion-button expand="block" (click)="OvernightSleep()">
+      <strong>Log a overnight sleep</strong>
+    </ion-button>
+  </div>
+  <div id="container2">
+    <ion-button expand="block" (click)="Sleepiness()">
+      <strong>Log daytime sleepiness</strong>
+    </ion-button>
+  </div>
+  <div id="container4">
+    <ion-button expand="block" (click)="PastSleeps()">
+      <strong>View past logs of sleepiness or overnight sleeps</strong>
+    </ion-button>
   </div>
 </ion-content>
