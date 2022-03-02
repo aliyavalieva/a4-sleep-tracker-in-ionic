@@ -26,5 +26,10 @@ export class HomePage {
 	OvernightSleep() {
 		this.navCtrl.navigateForward("/overnight-sleep");
 	}
-
+	Sleepiness() {
+		this.navCtrl.navigateForward("/sleepiness");
+	}
+	PastSleeps() {
+		this.navCtrl.navigateForward("/pastlogs");
+	}
 }

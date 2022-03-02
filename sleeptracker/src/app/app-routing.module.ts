@@ -14,6 +14,14 @@ const routes: Routes = [
     path: 'overnight-sleep',
     loadChildren: () => import('./overnight-sleep/overnight-sleep.module').then( m => m.OvernightSleepPageModule)
   },
+  {
+    path: 'sleepiness',
+    loadChildren: () => import('./sleepiness/sleepiness.module').then( m => m.SleepinessPageModule)
+  },
+  {
+    path: 'pastlogs',
+    loadChildren: () => import('./pastlogs/pastlogs.module').then( m => m.PastlogsPageModule)
+  },
 
 ];
 
