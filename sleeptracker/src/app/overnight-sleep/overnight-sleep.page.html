@@ -1,12 +1,46 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header [translucent] = "true">
+  <ion-toolbar color="light">
     <ion-buttons slot="start">
       <ion-back-button (click)="back()"></ion-back-button>
     </ion-buttons>
-    <ion-title>Overnight Sleep</ion-title>
+    <ion-title>Log Overnight Sleep Data</ion-title>
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+
+  <ion-item (click)="showPicker=!showPicker">
+    <ion-label>Slept from</ion-label>
+    <ion-text slot="end">
+      {{formattedStringStart}}
+    </ion-text>
+  </ion-item> 
+
+  <ion-item (click)="showPicker2=!showPicker2">
+    <ion-label>Slept to</ion-label>
+    <ion-text slot="end">
+      {{formattedStringEnd}}
+    </ion-text>
+  </ion-item> 
+
+   <!-- to get the value from  datetime do #datetime then datetime.value-->
+  <ion-datetime *ngIf="showPicker" 
+ 
+  #datetime
+  [value]="dateValueStart" size="cover"
+  (ionChange)="dateChangedStart(datetime.value)"
+  showDefaultButtons="true"
+  (ionCancel)="showPicker=false;">
+  </ion-datetime> 
+
+  <ion-datetime *ngIf="showPicker2" 
+  #datetime
+  [value]="dateValueEnd" size="cover"
+  (ionChange)="dateChangedEnd(datetime.value)"
+  showDefaultButtons="true"
+  (ionCancel)="showPicker2=false;">
+  </ion-datetime> 
+
 
 </ion-content>
