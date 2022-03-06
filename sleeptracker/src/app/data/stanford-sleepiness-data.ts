@@ -12,13 +12,14 @@ export class StanfordSleepinessData extends SleepData {
 	'Foggy; losing interest in remaining awake; slowed down', //5
 	'Sleepy, woozy, fighting sleep; prefer to lie down', //6
 	'No longer fighting sleep, sleep onset soon; having dream-like thoughts']; //7
+	loggedAt2:number;
 
 	private loggedValue:number;
 
-	constructor(loggedValue:number, loggedAt:Date = new Date()) {
+	constructor(loggedValue:number, loggedAt:number) {
 		super();
 		this.loggedValue = loggedValue;
-		this.loggedAt = loggedAt;
+		this.loggedAt2 = loggedAt;
 	}
 
 	summaryString():string {
