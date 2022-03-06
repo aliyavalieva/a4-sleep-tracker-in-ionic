@@ -16,7 +16,7 @@ import { AlertController, ModalController, IonDatetime } from '@ionic/angular';
 export class OvernightSleepPage implements OnInit {
 
   showPicker = false;
-  showPicker2 = false;
+
   dateValueStart = format(new Date(),'yyyy-MM-dd') + 'T05:00:00.000Z';
   dateValueEnd = format(new Date(),'yyyy-MM-dd') + 'T05:00:00.000Z';
 
@@ -47,7 +47,7 @@ export class OvernightSleepPage implements OnInit {
 
     this.dateValueEnd = value;
     this.formattedStringEnd = format(parseISO(value),'HH:mm,MMM d, yyyy');
-    this.showPicker2 = false;
+    this.showPicker = false;
   }
  
   ngOnInit() {
