@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {format, parseISO} from 'date-fns';
+import { Storage } from '@capacitor/storage';
 
 import { SleepService } from '../services/sleep.service';
 import { SleepData } from '../data/sleep-data';
 import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
 import { AlertController, ModalController, IonDatetime } from '@ionic/angular';
-//import { format } from 'path';
+
 
 @Component({
   selector: 'app-overnight-sleep',
@@ -20,12 +21,14 @@ export class OvernightSleepPage implements OnInit {
   dateValueStart = format(new Date(),'yyyy-MM-dd') + 'T05:00:00.000Z';
   dateValueEnd = format(new Date(),'yyyy-MM-dd') + 'T05:00:00.000Z';
 
+
   formattedStringStart = '';
   formattedStringEnd = '';
 
   overnightSleepDataArray: OvernightSleepData[];
 
-  constructor(private sleepService:SleepService, public alertController: AlertController) {}
+  constructor(private sleepService:SleepService, public alertController: AlertController) {
+  }
 
   dateChangedStart(value){
 
@@ -56,10 +59,17 @@ export class OvernightSleepPage implements OnInit {
   }
 
     addEntry(){
-    
     let overnightSleepData: OvernightSleepData = new OvernightSleepData(new Date(this.dateValueStart), new Date(this.dateValueEnd) );
-    this.sleepService.logOvernightData(overnightSleepData);
-   
+    
+    Storage.set({key:overnightSleepData.summaryString(), value: overnightSleepData.dateString() }).then(() => {
+      this.sleepService.logOvernightData(overnightSleepData);
+    });
+
+    Storage.get({key:overnightSleepData.id}).then((usr) => {
+      if(usr.value) {
+      this.overnightSleepDataArray.push( JSON.parse(usr.value));
+      }
+    });
     this.presentAlert();
     
   }

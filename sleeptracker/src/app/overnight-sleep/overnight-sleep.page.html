@@ -11,20 +11,12 @@
 <ion-content [fullscreen]="true">
 
   <ion-item (click)="showPicker=!showPicker">
-    <ion-label>Slept from</ion-label>
+    <ion-label>Slept from (Tap here)</ion-label>
     <ion-text slot="end">
       {{formattedStringStart}}
     </ion-text>
   </ion-item> 
-
-  <ion-item (click)="showPicker2=!showPicker2">
-    <ion-label>Slept to</ion-label>
-    <ion-text slot="end">
-      {{formattedStringEnd}}
-    </ion-text>
-  </ion-item> 
-
-   <!-- to get the value from  datetime do #datetime then datetime.value-->
+  
   <ion-datetime *ngIf="showPicker" 
  
   #datetime
@@ -33,7 +25,13 @@
   showDefaultButtons="true"
   (ionCancel)="showPicker=false;">
   </ion-datetime> 
-
+  <ion-row style="height: 25px"></ion-row>
+  <ion-item (click)="showPicker2=!showPicker2">
+    <ion-label>Slept to (Tap here)</ion-label>
+    <ion-text slot="end">
+      {{formattedStringEnd}}
+    </ion-text>
+  </ion-item> 
   <ion-datetime *ngIf="showPicker2" 
   #datetime
   [value]="dateValueEnd" size="cover"
@@ -42,18 +40,24 @@
   (ionCancel)="showPicker2=false;">
   </ion-datetime> 
 
+  <ion-row style="height: 25px"></ion-row>
+   <!-- to get the value from  datetime do #datetime then datetime.value-->
+ 
+
   <ion-button expand="block" (click)="addEntry()">
     ADD ENTRY
   </ion-button>
-  
+
   <ion-item>
     <ion-label> Your Overnight Log History: </ion-label>
   </ion-item>
-  <ion-card *ngFor="let sleepData of overnightSleepDataArray">
+
+  <ion-card *ngFor="let sleepData of overnightSleepDataArray" >
     <ion-item>
-      <ion-label>{{sleepData.loggedAt}}</ion-label>
+      <ion-label> {{sleepData.summaryString()}} </ion-label>
     </ion-item>
     <ion-card-content>{{sleepData.dateString()}}</ion-card-content>
+
   </ion-card>
 
 </ion-content>

@@ -9,7 +9,7 @@
 
 <ion-content>
     <ion-item>
-      <ion-label>Enter Sleepiness</ion-label>
+      <ion-label>Enter Sleepiness (Tap here)</ion-label>
       <ion-select okText="Enter" cancelText="Back" [(ngModel)]="degree">
 
         <ion-select-option value="1">1. Feeling active, vital, alert, or wide awake</ion-select-option>
@@ -29,19 +29,19 @@
       </ion-select> 
 
     </ion-item>
-
+  <ion-row style="height: 25px"></ion-row>
   <ion-button expand="block" (click)="addEntry()">
     Add Entry
   </ion-button>
-
+  <ion-row style="height: 25px"></ion-row>
   <ion-item>
     <ion-label> Your Sleepiness Log History: </ion-label>
   </ion-item>
   <ion-card *ngFor="let sleepData2 of sleepinessDataArray">
     <ion-item>
-      <ion-label>{{sleepData2.summaryString()}}</ion-label>
+      <ion-label>{{sleepData2.dateString()}}</ion-label>
     </ion-item>
-    <ion-card-content>{{sleepData2.dateString()}}</ion-card-content>
+    <ion-card-content>{{sleepData2.summaryString()}}</ion-card-content>
   </ion-card>
 
 </ion-content>
