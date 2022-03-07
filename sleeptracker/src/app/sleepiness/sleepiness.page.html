@@ -31,8 +31,17 @@
     </ion-item>
 
   <ion-button expand="block" (click)="addEntry()">
-    ADD ENTRY
+    Add Entry
   </ion-button>
 
+  <ion-item>
+    <ion-label> Your Sleepiness Log History: </ion-label>
+  </ion-item>
+  <ion-card *ngFor="let sleepData2 of sleepinessDataArray">
+    <ion-item>
+      <ion-label>{{sleepData2.summaryString()}}</ion-label>
+    </ion-item>
+    <ion-card-content>{{sleepData2.dateString()}}</ion-card-content>
+  </ion-card>
 
 </ion-content>

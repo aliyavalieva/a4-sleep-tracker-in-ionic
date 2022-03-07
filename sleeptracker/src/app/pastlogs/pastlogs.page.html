@@ -8,34 +8,5 @@
 </ion-header>
 
 <ion-content>
-  <ion-segment (ionChange)="segmentChanged($event)" value="sleepData">
-      <ion-segment-button value="sleepData">
-          <ion-label>Sleep Data</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="sleepinessData">
-          <ion-label>Sleepiness Data</ion-label>
-        </ion-segment-button>
-  </ion-segment>
 
-  <!-- Overnight Sleep Data-->
-  <div *ngIf=showSleepDataCards>
-
-    <ion-card *ngFor="let sleepData of overnightSleepDataArray">
-      <ion-item>
-        <ion-label>{{sleepData.loggedAt}}</ion-label>
-      </ion-item>
-      <ion-card-content>{{sleepData.dateString()}}</ion-card-content>
-    </ion-card>
-
-  </div>
-
-  <!-- Sleepiness Data-->
-  <div  *ngIf=showSleepinessDataCards >
-    <ion-card *ngFor="let sleepinessData of sleepinessDataArray">
-      <ion-item>
-        <ion-label>{{sleepinessData.loggedAt}}</ion-label>
-      </ion-item>
-      <ion-card-content>{{sleepinessData.dateString()}}</ion-card-content>
-    </ion-card>
-  </div>
 </ion-content>
