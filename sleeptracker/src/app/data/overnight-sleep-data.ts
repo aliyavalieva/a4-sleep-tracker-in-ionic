@@ -1,13 +1,16 @@
 import { SleepData } from './sleep-data';
 
 export class OvernightSleepData extends SleepData {
-	private sleepStart:Date;
-	private sleepEnd:Date;
+	 
+	
+	 sleepStart:Date;
+	 sleepEnd:Date;
 
-	constructor(sleepStart:Date, sleepEnd:Date) {
+	constructor(sleepStartt:Date, sleepEndd:Date) {
 		super();
-		this.sleepStart = sleepStart;
-		this.sleepEnd = sleepEnd;
+		this.sleepStart = sleepStartt;
+		this.sleepEnd = sleepEndd;
+
 	}
 
 	summaryString():string {
@@ -18,10 +21,21 @@ export class OvernightSleepData extends SleepData {
 		var difference_ms = sleepEnd_ms - sleepStart_ms;
 		    
 		// Convert to hours and minutes
+		
 		return Math.floor(difference_ms / (1000*60*60)) + " hours, " + Math.floor(difference_ms / (1000*60) % 60) + " minutes.";
+
+
 	}
+	
 
 	dateString():string {
-		return "Night of " + this.sleepStart.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+		
+		return "You went to bed at: " + this.sleepStart + " and woke up at: " + this.sleepEnd;
+
+		// return "Night of " + 
+		// this.sleepStart.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })+
+		// "You went to bed at: " + this.summaryString() + " and woke up at: " 
+		// + this.sleepEnd.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) +
+		// this.summaryString() ;
 	}
 }

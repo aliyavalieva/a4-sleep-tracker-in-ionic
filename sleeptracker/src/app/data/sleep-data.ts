@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 
 export class SleepData {
+	
 	id:string;
 	loggedAt:Date;
 

@@ -26,6 +26,9 @@ export class PastlogsPage implements OnInit {
 
   segmentChanged(ev: any) {
     if(ev.detail.value=="sleepData") {
+      
+      console.log(this.overnightSleepDataArray);
+      
       this.showSleepDataCards = true; 
       this.showSleepinessDataCards = false;
     } else if (ev.detail.value=="sleepinessData"){

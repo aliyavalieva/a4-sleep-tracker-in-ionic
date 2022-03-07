@@ -23,7 +23,6 @@ export class SleepinessPage implements OnInit {
   addEntry() {
     this.dateTime = Date.now();
     let stanfordSleepinessData:StanfordSleepinessData = new StanfordSleepinessData(this.degree, this.dateTime);
-
     this.sleepService.logSleepinessData(stanfordSleepinessData); 
 
   }

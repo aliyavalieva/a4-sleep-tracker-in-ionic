@@ -14,7 +14,7 @@ import { AlertController, ModalController, IonDatetime } from '@ionic/angular';
   styleUrls: ['./overnight-sleep.page.scss'],
 })
 export class OvernightSleepPage implements OnInit {
-
+  dateTime:number;
   showPicker = false;
 
   dateValueStart = format(new Date(),'yyyy-MM-dd') + 'T05:00:00.000Z';
@@ -23,19 +23,9 @@ export class OvernightSleepPage implements OnInit {
   formattedStringStart = '';
   formattedStringEnd = '';
 
-  start:Date;
-  end:Date;
-  sleepDataArray: OvernightSleepData[];
+  overnightSleepDataArray: OvernightSleepData[];
 
-  constructor(private sleepService:SleepService, public alertController: AlertController,
-    private modalController:ModalController ) {}
-  
-  setStart(){
-    this.formattedStringStart = format(parseISO(format(new Date(),'yyyy-MM-dd') + 'T11:00:00.000Z'),'HH:mm,MMM d, yyyy');
-    }
-  setEnd(){
-      this.formattedStringEnd = format(parseISO(format(new Date(),'yyyy-MM-dd') + 'T11:00:00.000Z'),'HH:mm,MMM d, yyyy');
-      }
+  constructor(private sleepService:SleepService, public alertController: AlertController) {}
 
   dateChangedStart(value){
 
@@ -51,7 +41,7 @@ export class OvernightSleepPage implements OnInit {
   }
  
   ngOnInit() {
-    this.sleepDataArray = SleepService.AllOvernightData;
+    this.overnightSleepDataArray = SleepService.AllOvernightData;
   }
 
  // ion-alert
@@ -66,27 +56,11 @@ export class OvernightSleepPage implements OnInit {
   }
 
     addEntry(){
-
-    // //this.startDateTime = new Date().toISOString();
-    // //this.endDateTime = new Date().toISOString();
-    // console.log('overnight-sleep.page addEntryClicked()');
-    // console.log('startDate: ' + this.start);
-    // console.log('endDate: ' + this.end);
-    // this.start = new Date(this.start);
-    // this.end = new Date(this.end);
-
-    let overnightSleepData: OvernightSleepData = new OvernightSleepData(new Date(this.dateValueStart), new Date(this.dateValueEnd));
     
+    let overnightSleepData: OvernightSleepData = new OvernightSleepData(new Date(this.dateValueStart), new Date(this.dateValueEnd) );
     this.sleepService.logOvernightData(overnightSleepData);
+   
     this.presentAlert();
-    
-
-    //Summary
-    /*this.sleepService.summaryOfAllOvernightData();
-    this.sleepService.summaryOfAllSleepinessData();
-    this.sleepService.summaryOfAllSleepData();*/
-    //this.sleepService.getAllOvernightDataFromStorage();
-    //this.sleepService.getAllSleepinessDataFromStorage();
     
   }
 

@@ -19,6 +19,14 @@
 
   <!-- Overnight Sleep Data-->
   <div *ngIf=showSleepDataCards>
+
+    <ion-card *ngFor="let sleepData of overnightSleepDataArray">
+      <ion-item>
+        <ion-label>{{sleepData.loggedAt}}</ion-label>
+      </ion-item>
+      <ion-card-content>{{sleepData.dateString()}}</ion-card-content>
+    </ion-card>
+
   </div>
 
   <!-- Sleepiness Data-->
@@ -27,7 +35,7 @@
       <ion-item>
         <ion-label>{{sleepinessData.loggedAt}}</ion-label>
       </ion-item>
-      <ion-card-content>{{sleepinessData.summaryString()}}</ion-card-content>
+      <ion-card-content>{{sleepinessData.dateString()}}</ion-card-content>
     </ion-card>
   </div>
 </ion-content>

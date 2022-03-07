@@ -42,4 +42,18 @@
   (ionCancel)="showPicker2=false;">
   </ion-datetime> 
 
+  <ion-button expand="block" (click)="addEntry()">
+    ADD ENTRY
+  </ion-button>
+  
+  <ion-item>
+    <ion-label> Your Overnight Log History: </ion-label>
+  </ion-item>
+  <ion-card *ngFor="let sleepData of overnightSleepDataArray">
+    <ion-item>
+      <ion-label>{{sleepData.loggedAt}}</ion-label>
+    </ion-item>
+    <ion-card-content>{{sleepData.dateString()}}</ion-card-content>
+  </ion-card>
+
 </ion-content>
